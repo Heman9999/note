@@ -3,6 +3,7 @@ btn = document.querySelector('.btn')
 btn.addEventListener('click',()=>{
     addTextBar();
 })
+TextBody = document.querySelector('.main_body')
 
 function saveText(){
     const textarea = document.querySelectorAll('.note_area textarea')
@@ -10,11 +11,14 @@ function saveText(){
     textarea.forEach((va)=>{
         data.push(va.value)
     })
-    localStorage.setItem('notes',JSON.stringify(data))
+    if(data.length === 0){
+        localStorage.removeItem('notes')
+    }else{
+        localStorage.setItem('notes',JSON.stringify(data))
+    }
+    
 }
 
-
- var TextBody = document.querySelector('.main_body')
 function addTextBar(test = ""){
     const notearea = document.createElement('div')
     notearea.classList.add('note_area')
@@ -38,7 +42,9 @@ function addTextBar(test = ""){
 (()=>{
     const item = localStorage.getItem('notes')
     const itemA = JSON.parse(item)
-    if(item !== null){
+    if(itemA === null){
+        addTextBar()
+    }else{
         itemA.forEach((va) =>{
             addTextBar(va)
         })
