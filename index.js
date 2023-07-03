@@ -15,7 +15,7 @@ function saveText(){
 
 
  var TextBody = document.querySelector('.main_body')
-function addTextBar(test){
+function addTextBar(test = ""){
     const notearea = document.createElement('div')
     notearea.classList.add('note_area')
     notearea.innerHTML = `<div class="note_header">
