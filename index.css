@@ -1,0 +1,9 @@
+body{
+    background-color: blue;
+}
+.header{
+    --blue: #00ff00;
+    width: 100%;
+    height: 20px;
+    background-color: var(--blue);
+}
